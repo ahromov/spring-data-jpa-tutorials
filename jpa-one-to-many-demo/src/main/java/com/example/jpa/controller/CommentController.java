@@ -3,7 +3,7 @@ package com.example.jpa.controller;
 import com.example.jpa.exception.ResourceNotFoundException;
 import com.example.jpa.model.Comment;
 import com.example.jpa.repository.CommentRepository;
-import com.example.jpa.repository.PostRepository;
+import com.example.jpa.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +19,7 @@ public class CommentController {
     private CommentRepository commentRepository;
 
     @Autowired
-    private PostRepository postRepository;
+    private CategoryRepository postRepository;
 
     @GetMapping("/posts/{postId}/comments")
     public Page<Comment> getAllCommentsByPostId(@PathVariable (value = "postId") Long postId,

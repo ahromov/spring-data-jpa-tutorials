@@ -28,7 +28,7 @@ public class Comment extends AuditModel {
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
     @JsonIdentityReference(alwaysAsId=true)
     @JsonProperty("post_id")
-    private Post post;
+    private Category post;
 
     public Long getId() {
         return id;
@@ -46,11 +46,11 @@ public class Comment extends AuditModel {
         this.text = text;
     }
 
-    public Post getPost() {
+    public Category getPost() {
         return post;
     }
 
-    public void setPost(Post post) {
+    public void setPost(Category post) {
         this.post = post;
     }
 }

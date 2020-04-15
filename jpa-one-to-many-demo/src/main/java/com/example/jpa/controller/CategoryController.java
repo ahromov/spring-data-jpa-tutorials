@@ -1,8 +1,8 @@
 package com.example.jpa.controller;
 
 import com.example.jpa.exception.ResourceNotFoundException;
-import com.example.jpa.model.Post;
-import com.example.jpa.repository.PostRepository;
+import com.example.jpa.model.Category;
+import com.example.jpa.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-public class PostController {
+public class CategoryController {
 
     @Autowired
-    private PostRepository postRepository;
+    private CategoryRepository postRepository;
 
     @GetMapping("/posts")
-    public Page<Post> getAllPosts(Pageable pageable) {
+    public Page<Category> getAllPosts(Pageable pageable) {
         return postRepository.findAll(pageable);
     }
 
     @PostMapping("/posts")
-    public Post createPost(@Valid @RequestBody Post post) {
+    public Category createPost(@Valid @RequestBody Category post) {
         return postRepository.save(post);
     }
 
     @PutMapping("/posts/{postId}")
-    public Post updatePost(@PathVariable Long postId, @Valid @RequestBody Post postRequest) {
+    public Category updatePost(@PathVariable Long postId, @Valid @RequestBody Category postRequest) {
         return postRepository.findById(postId).map(post -> {
             post.setTitle(postRequest.getTitle());
             post.setDescription(postRequest.getDescription());
